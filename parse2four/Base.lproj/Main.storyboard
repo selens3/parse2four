@@ -281,9 +281,20 @@
                         <viewLayoutGuide key="safeArea" id="c7d-V2-4Jc"/>
                     </view>
                     <navigationItem key="navigationItem" id="uhZ-hA-xip">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="K2u-Ty-2sB"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="A5G-OY-7ok"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="K2u-Ty-2sB">
+                            <connections>
+                                <action selector="cancelClicked:" destination="JVs-Uq-m65" id="8hJ-Gp-EdW"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="A5G-OY-7ok">
+                            <connections>
+                                <action selector="saveClicked:" destination="JVs-Uq-m65" id="sOf-Vg-D4S"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="nhc-sl-93U" id="wzq-Z8-QbB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="63f-NF-f5U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
