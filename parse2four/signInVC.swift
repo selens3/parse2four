@@ -35,7 +35,12 @@ class signInvc: UIViewController {
                     alert.addAction(okButton)
                     self.present(alert, animated: true , completion: nil)
                 } else {
-                    print("logged tamam")
+                    UserDefaults.standard.set(self.usernameText.text!, forKey: "userLoggedIn")
+                    UserDefaults.standard.synchronize()
+                    
+                    let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+                    delegate.rememberLogIn()
+                    
                 }
             })
             
@@ -65,7 +70,11 @@ class signInvc: UIViewController {
                     self.present(alert, animated: true , completion: nil)
                 } else {
                     
-                    print("user tamam")
+                    UserDefaults.standard.set(self.usernameText.text!, forKey: "userLoggedIn")
+                    UserDefaults.standard.synchronize()
+                    
+                    let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+                    delegate.rememberLogIn()
                 }
                 
             })

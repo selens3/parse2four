@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
         
+        rememberLogIn()
         
         return true
     }
@@ -62,6 +63,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    
+    func rememberLogIn() {
+        
+        let user : String? = UserDefaults.standard.string(forKey: "userLoggedIn")
+        if user != nil {
+            let board : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let navigationController = board.instantiateViewController(withIdentifier: "navigationVC") as! UINavigationController
+            window?.rootViewController = navigationController
+            
+        } else {
+            
+        }
+        
     }
 
 
