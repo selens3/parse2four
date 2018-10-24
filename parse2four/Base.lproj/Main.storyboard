@@ -12,7 +12,7 @@
         <!--Sign Invc-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="signInvc" customModule="parse2four" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signinVC" id="BYZ-38-t0r" customClass="signInvc" customModule="parse2four" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,9 +100,19 @@
                         <viewLayoutGuide key="safeArea" id="FEx-QO-rfh"/>
                     </view>
                     <navigationItem key="navigationItem" id="oPE-w5-CQ1">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="cCX-sq-8lI"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="twy-fl-AFg">
+                            <connections>
+                                <action selector="logoutClicked:" destination="C9d-cB-Ttx" id="dec-xc-OHx"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="cCX-sq-8lI">
+                            <connections>
+                                <action selector="addClicked:" destination="C9d-cB-Ttx" id="K73-vz-X2D"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="ze0-jr-RzY" id="wLe-Oy-Fhf"/>
                         <segue destination="Pfc-La-ypw" kind="show" identifier="fromplacesVCtoimageVC" id="52G-Uq-Mna"/>
                         <segue destination="4GS-dT-Dje" kind="show" identifier="fromplacesVCtodetailsVC" id="qsQ-uT-a4o"/>
                     </connections>

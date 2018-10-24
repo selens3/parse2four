@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		DEA81064900A1F09AC345806 /* Pods_parse2four.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEF798E093FEBE980D80903 /* Pods_parse2four.framework */; };
 		EBC940B5218061FA009747A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC940B4218061FA009747A0 /* AppDelegate.swift */; };
-		EBC940B7218061FA009747A0 /* signInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC940B6218061FA009747A0 /* signInVC.swift */; };
+		EBC940B7218061FA009747A0 /* signInvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC940B6218061FA009747A0 /* signInvc.swift */; };
 		EBC940BA218061FA009747A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBC940B8218061FA009747A0 /* Main.storyboard */; };
 		EBC940BC218061FC009747A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBC940BB218061FC009747A0 /* Assets.xcassets */; };
 		EBC940BF218061FC009747A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBC940BD218061FC009747A0 /* LaunchScreen.storyboard */; };
@@ -26,7 +26,7 @@
 		CC914CEF196D4160D24D095D /* Pods-parse2four.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-parse2four.debug.xcconfig"; path = "Pods/Target Support Files/Pods-parse2four/Pods-parse2four.debug.xcconfig"; sourceTree = "<group>"; };
 		EBC940B1218061FA009747A0 /* parse2four.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = parse2four.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBC940B4218061FA009747A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EBC940B6218061FA009747A0 /* signInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signInVC.swift; sourceTree = "<group>"; };
+		EBC940B6218061FA009747A0 /* signInvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signInvc.swift; sourceTree = "<group>"; };
 		EBC940B9218061FA009747A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBC940BB218061FC009747A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBC940BE218061FC009747A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 			children = (
 				EBC940C821806C59009747A0 /* select.png */,
 				EBC940B4218061FA009747A0 /* AppDelegate.swift */,
-				EBC940B6218061FA009747A0 /* signInVC.swift */,
+				EBC940B6218061FA009747A0 /* signInvc.swift */,
 				EBC940C621806523009747A0 /* placesVC.swift */,
 				EBC940CE21806F8D009747A0 /* detailsVC.swift */,
 				EBC940CC21806F07009747A0 /* mapVC.swift */,
@@ -229,7 +229,7 @@
 				EBC940CD21806F07009747A0 /* mapVC.swift in Sources */,
 				EBC940CF21806F8D009747A0 /* detailsVC.swift in Sources */,
 				EBC940CB21806E22009747A0 /* imageVC.swift in Sources */,
-				EBC940B7218061FA009747A0 /* signInVC.swift in Sources */,
+				EBC940B7218061FA009747A0 /* signInvc.swift in Sources */,
 				EBC940B5218061FA009747A0 /* AppDelegate.swift in Sources */,
 				EBC940C721806523009747A0 /* placesVC.swift in Sources */,
 			);
