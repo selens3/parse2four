@@ -11,11 +11,54 @@ import Parse
 
 class signInvc: UIViewController {
 
+    @IBOutlet weak var usernameText: UITextField!
+    
+    @IBOutlet weak var passwordText: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+         
+        
+        
     }
 
-
+    @IBAction func signInClicked(_ sender: Any) {
+    }
+    
+    @IBAction func signUpClicked(_ sender: Any) {
+        
+        if usernameText.text != "" && passwordText.text != "" {
+            
+            let user = PFUser()
+            user.username = usernameText.text!
+            user.password = passwordText.text!
+            
+            user.signUpInBackground(block: { (success, error) in
+                if error != nil {
+                    let alert = UIAlertController(title: "Error", message: error?.localizedDescription , preferredStyle: UIAlertController.Style.alert)
+                    let okButton  = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+                    alert.addAction(okButton)
+                    self.present(alert, animated: true , completion: nil)
+                } else {
+                    
+                    print("user tamam")
+                }
+                
+            })
+            
+            
+            
+        }  else {
+            let alert = UIAlertController(title: "Error", message: "username needed" , preferredStyle: UIAlertController.Style.alert)
+            let okButton  = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+            alert.addAction(okButton)
+            self.present(alert, animated: true , completion: nil)
+            
+            
+        }
+        
+    }
 }
 

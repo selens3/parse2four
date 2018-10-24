@@ -32,10 +32,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKB-rE-EKc">
                                 <rect key="frame" x="74" y="298" width="47" height="30"/>
                                 <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <action selector="signInClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LcR-0z-9ev"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0O-Fn-grc">
                                 <rect key="frame" x="245" y="307" width="55" height="30"/>
                                 <state key="normal" title="Sign UP"/>
+                                <connections>
+                                    <action selector="signUpClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="txV-3P-BPu"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parse 2 Four" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTk-dA-3OX">
                                 <rect key="frame" x="139" y="93" width="97" height="21"/>
@@ -62,6 +68,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="passwordText" destination="HWf-mN-0aQ" id="3XA-41-55B"/>
+                        <outlet property="usernameText" destination="kpM-ry-kH3" id="Teo-cS-nwG"/>
                         <segue destination="44v-6G-kNA" kind="show" identifier="fromsignInVCtoplacesVC" id="gOm-z5-Uy1"/>
                     </connections>
                 </viewController>
