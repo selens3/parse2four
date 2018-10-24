@@ -31,6 +31,8 @@ class placesVC: UIViewController {
     }
     
     @IBAction func addClicked(_ sender: Any) {
+        self.performSegue(withIdentifier: "fromplacesVCtoimageVC", sender: nil)
+        
     }
     
 

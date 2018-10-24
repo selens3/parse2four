@@ -241,9 +241,17 @@
                         <viewLayoutGuide key="safeArea" id="1fP-IQ-lxE"/>
                     </view>
                     <navigationItem key="navigationItem" id="g1a-Dr-Jyp">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="xGf-Z8-nCP"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="xGf-Z8-nCP">
+                            <connections>
+                                <action selector="nextClicked:" destination="Y0k-3e-JZ4" id="ocj-nr-eIq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="placeAtmosphereText" destination="N2Z-A9-WLf" id="DNt-BG-cxy"/>
+                        <outlet property="placeImage" destination="HYR-MX-Dux" id="ZgC-1j-rdX"/>
+                        <outlet property="placeTypeText" destination="Zfg-RL-zm5" id="dSx-Lw-N4Z"/>
+                        <outlet property="placenameText" destination="UMU-hz-yJv" id="hJD-Nb-uDo"/>
                         <segue destination="3Zo-uP-66z" kind="show" identifier="fromimageVCtomapVC" id="FSz-S4-RGn"/>
                     </connections>
                 </viewController>
