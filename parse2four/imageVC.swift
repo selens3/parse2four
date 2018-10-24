@@ -9,6 +9,14 @@
 import UIKit
 import Parse
 
+
+            var globalName = ""
+            var globalType = ""
+            var globalAtmosphere = ""
+            var globalImage = UIImage()
+
+
+
 class imageVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var placenameText: UITextField!
     @IBOutlet weak var placeTypeText: UITextField!
@@ -26,6 +34,15 @@ class imageVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
         
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        globalName = ""
+        globalType = ""
+        globalAtmosphere = ""
+        globalImage = UIImage()
+    }
+    
+    
     
     @objc func selectImage() {
         let picker = UIImagePickerController()
@@ -45,7 +62,24 @@ class imageVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
     
 
     @IBAction func nextClicked(_ sender: Any) {
+        if placenameText.text != "" && placeTypeText.text != "" && placeAtmosphereText.text != "" {
+            
+            if let chosenImage = placeImage.image {
+                
+                 globalName = placenameText.text!
+                globalType = placeTypeText.text!
+                globalAtmosphere = placeAtmosphereText.text!
+                globalImage = chosenImage
+                
+            }
+        }
+        
+        self.performSegue(withIdentifier: "fromimageVCtomapVC", sender: nil)
+        
+        placenameText.text = ""
+        placeTypeText.text = ""
+        placeAtmosphereText.text = ""
+        placeImage.image = UIImage(named: "select.png")
+        
     }
-    
-
 }
