@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  imageVC.swift
 //  parse2four
 //
 //  Created by Suat Selen on 24.10.2018.
@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import Parse
 
-class ViewController: UIViewController {
+class imageVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
 
+        // Do any additional setup after loading the view.
+    }
+    
+
+    
 
 }
-

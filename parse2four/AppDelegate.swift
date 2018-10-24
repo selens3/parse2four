@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let myConfig = ParseClientConfiguration { (ParseMutableClientConfiguration) in
+            ParseMutableClientConfiguration.applicationId = "FA2HM3QhFGBHLZvxSxi0GrTReCbPhmhlFIA77vQZ"
+            ParseMutableClientConfiguration.server = "https://parseapi.back4app.com/"
+            ParseMutableClientConfiguration.clientKey = "kXwAqeJ6aYXW64b32aOSrgDcQARtpZeNgvv2dctY"
+            
+        }
+        
+        
+        
+        
+        
+        Parse.initialize(with: myConfig)
+        
+        let defaultACL = PFACL()
+        
+        defaultACL.hasPublicWriteAccess = true
+        defaultACL.hasPublicReadAccess = true
+        
+        PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
+        
+        
         return true
     }
 
