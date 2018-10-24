@@ -25,6 +25,28 @@ class signInvc: UIViewController {
     }
 
     @IBAction func signInClicked(_ sender: Any) {
+        
+        if usernameText.text != "" && passwordText.text != "" {
+            
+            PFUser.logInWithUsername(inBackground: usernameText.text!, password: passwordText.text!, block: { (user, error) in
+                if  error != nil {
+                    let alert = UIAlertController(title: "Error", message: error?.localizedDescription , preferredStyle: UIAlertController.Style.alert)
+                    let okButton  = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+                    alert.addAction(okButton)
+                    self.present(alert, animated: true , completion: nil)
+                } else {
+                    print("logged tamam")
+                }
+            })
+            
+        } else {
+            let alert = UIAlertController(title: "Error", message: "username needed" , preferredStyle: UIAlertController.Style.alert)
+            let okButton  = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+            alert.addAction(okButton)
+            self.present(alert, animated: true , completion: nil)
+        }
+        
+        
     }
     
     @IBAction func signUpClicked(_ sender: Any) {
