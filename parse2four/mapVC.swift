@@ -16,8 +16,10 @@ class mapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     var manager = CLLocationManager()
+    var choosenLatitude = ""
+    var choosenLongitude = ""
     
-    override func viewDidLoad() {
+    override func viewDidLoad() { ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         super.viewDidLoad()
         
         mapView.delegate = self
@@ -27,8 +29,41 @@ class mapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         manager.startUpdatingLocation()
         
 
-         
+        let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(mapVC.chooseLocation(gestureRecognizer:)))
+        recognizer.minimumPressDuration = 2
+        mapView.addGestureRecognizer(recognizer)
         
+        
+        
+        
+     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.choosenLongitude = ""
+        self.choosenLatitude = ""
+        
+    }
+    
+    
+    @objc func chooseLocation(gestureRecognizer: UIGestureRecognizer) {
+        
+        if gestureRecognizer.state == UIGestureRecognizer.State.began {
+            let touches = gestureRecognizer.location(in: self.mapView)
+            let coordinates = self.mapView.convert(touches, toCoordinateFrom: self.mapView)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinates
+            annotation.title = globalName
+            annotation.subtitle = globalType
+            
+            self.mapView.addAnnotation(annotation)
+            
+            self.choosenLatitude = String(coordinates.latitude)
+            self.choosenLongitude = String(coordinates.longitude)
+            
+            
+        }
         
     }
     
