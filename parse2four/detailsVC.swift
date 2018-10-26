@@ -8,8 +8,29 @@
 
 import UIKit
 import Parse
+import MapKit
 
-class detailsVC: UIViewController {
+class detailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+    
+    var selectedPlace = ""
+    
+    @IBOutlet weak var placeImage: UIImageView!
+    @IBOutlet weak var placeNameLabel: UILabel!
+    @IBOutlet weak var placeTypeLabel: UILabel!
+    @IBOutlet weak var placeAtmosphereLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
+    
+    var nameArray = [String]()
+    var typeArray = [String]()
+
+    var atmosphereArray = [String]()
+
+    var latitudeArray  = [String]()
+
+    var longitudeArray = [String]()
+    var imageArray = [PFFile]()
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

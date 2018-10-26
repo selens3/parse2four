@@ -53,6 +53,19 @@ class placesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromplacesVCtodetailsVC" {
+            let destinationVC = segue.description as! detailsVC
+            destinationVC.selectedPlace = self.choosenPlace
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.choosenPlace = placeNameArray[indexPath.row]
+        self.performSegue(withIdentifier: "fromplacesVCtodetailsVC", sender: nil)
+        
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = placeNameArray[indexPath.row]

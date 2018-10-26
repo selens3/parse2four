@@ -178,6 +178,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eXs-0G-FfC"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="9jq-JJ-bKC" id="LR8-Is-ybN"/>
+                        <outlet property="placeAtmosphereLabel" destination="koH-Q7-dx3" id="eyy-G2-GxM"/>
+                        <outlet property="placeImage" destination="SQu-0B-7PH" id="KCv-8g-jfF"/>
+                        <outlet property="placeNameLabel" destination="iIX-vz-rO0" id="bAU-Fa-9wk"/>
+                        <outlet property="placeTypeLabel" destination="Q3d-5z-9FO" id="xta-0f-xGw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KgI-YG-h61" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
