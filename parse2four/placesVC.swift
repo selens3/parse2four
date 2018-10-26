@@ -25,7 +25,32 @@ class placesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
 
         tableView.delegate = self
+    
         tableView.dataSource = self
+        
+        getData()
+    
+    }
+    
+    func getData() {
+        
+        let query = PFQuery(className: "Places")
+        query.findObjectsInBackground { (objects, error) in
+            if error != nil {
+                let alert = UIAlertController(title: "Error", message: error?.localizedDescription , preferredStyle: UIAlertController.Style.alert)
+                let okButton  = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+                alert.addAction(okButton)
+                self.present(alert, animated: true , completion: nil)
+            } else {
+                self.placeNameArray.removeAll(keepingCapacity: false)
+                for object in objects! {
+                    self.placeNameArray.append(object.object(forKey: "name") as! String)
+                }
+                self.tableView.reloadData()
+            }
+        }
+        
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
