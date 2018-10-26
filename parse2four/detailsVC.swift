@@ -46,7 +46,6 @@ class detailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate 
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
-        manager.startUpdatingLocation()
         
         
         findPlaceFromServer()
@@ -54,7 +53,64 @@ class detailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate 
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        if self.choosenLongitude != "" && self.choosenLatitude != "" {
+            let location = CLLocationCoordinate2D(latitude: Double(self.choosenLatitude)!, longitude: Double(self.choosenLongitude)!)
+            let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+            let region = MKCoordinateRegion(center: location, span: span)
+            
+            self.mapView.setRegion(region, animated: true)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location
+            annotation.title = self.nameArray.last!
+            annotation.subtitle = self.typeArray.last!
+            self.mapView.addAnnotation(annotation)
+            
+        }
         //selectedLocation
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        let reuseID = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID)
+        
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
+            pinView?.canShowCallout = true
+            let button = UIButton(type: .detailDisclosure)
+            pinView?.rightCalloutAccessoryView = button
+        } else {
+            pinView?.annotation = annotation
+        }
+        
+        return pinView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if self.choosenLongitude != "" && self.choosenLatitude != "" {
+            self.requestCLLocation = CLLocation(latitude: Double(self.choosenLatitude)!, longitude: Double(self.choosenLongitude)!)
+            
+            CLGeocoder().reverseGeocodeLocation(requestCLLocation, completionHandler: { (placemarks, error) in
+                if let placemark = placemarks {
+                    if placemark.count > 0 {
+                        let mkPlaceMark = MKPlacemark(placemark: placemark[0])
+                        let mapItem = MKMapItem(placemark: mkPlaceMark)
+                        mapItem.name = self.nameArray.last!
+                        
+                        let launchOptiopns = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+                        mapItem.openInMaps(launchOptions: launchOptiopns)
+                        
+                    }
+                }
+            })
+        }
     }
     
     func findPlaceFromServer() {
@@ -86,10 +142,10 @@ class detailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate 
                     
                     self.placeNameLabel.text = "Name: \(self.nameArray.last!)"
                     self.placeTypeLabel.text = "Type: \(self.typeArray.last!)"
-                    self.placeAtmosphereLabel.text = "Atmosphere: \(self.typeArray.last!)"
+                    self.placeAtmosphereLabel.text = "Atmosphere: \(self.atmosphereArray.last!)"
                     self.choosenLatitude = self.latitudeArray.last!
                     self.choosenLongitude = self.longitudeArray.last!
-                    
+                    self.manager.startUpdatingLocation()
                     self.imageArray.last?.getDataInBackground(block: { (data, error) in
                         if error != nil {
                             let alert = UIAlertController(title: "Error", message: error?.localizedDescription , preferredStyle: UIAlertController.Style.alert)
