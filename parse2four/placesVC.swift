@@ -9,15 +9,37 @@
 import UIKit
 import Parse
 
-class placesVC: UIViewController {
+class placesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+   
+    
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var placeNameArray = [String]()
+    var choosenPlace = ""
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = placeNameArray[indexPath.row]
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return placeNameArray.count
+    }
+    
+   
     
     @IBAction func logoutClicked(_ sender: Any) {
         UserDefaults.standard.removeObject(forKey: "userLoggedIn")
