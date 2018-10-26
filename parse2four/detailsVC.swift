@@ -30,15 +30,32 @@ class detailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate 
     var longitudeArray = [String]()
     var imageArray = [PFFile]()
 
+    
+    var manager = CLLocationManager()
+    var requestCLLocation = CLLocation()
+    
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        mapView.delegate = self
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+        
+        
+        
     }
     
-
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        //selectedLocation
+    }
+    
+    
+    
     
 
 }
